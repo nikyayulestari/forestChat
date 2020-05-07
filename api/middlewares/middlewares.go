@@ -8,7 +8,8 @@ import (
 
 	jwt "github.com/dgrijalva/jwt-go"
 
-	"github.com/peterwade153/ivents/api/responses"
+	"belajar/heyoo/api/responses"
+	//"github.com/peterwade153/ivents/api/responses"
 )
 
 // SetContentTypeMiddleware sets content-type to json

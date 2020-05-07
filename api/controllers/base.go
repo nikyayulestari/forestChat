@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"belajar/go-postgree/api/middlewares"
+	"belajar/go-postgree/api/models"
 	"belajar/go-postgree/api/responses"
 
 	"fmt"
@@ -11,7 +12,6 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres" //postgres
-	"github.com/peterwade153/ivents/api/models"
 )
 
 // App Struct
@@ -33,7 +33,7 @@ func (a *App) Initialize(DbHost, DbPort, DbUser, DbName, DbPassword string) {
 		fmt.Printf("We are connected to the database %s", DbName)
 	}
 
-	a.DB.Debug().AutoMigrate(&models.User{}) //database migration
+	a.DB.Debug().AutoMigrate(&models.Users{}) //database migration
 
 	a.Router = mux.NewRouter().StrictSlash(true)
 	a.initializeRoutes()
@@ -54,5 +54,5 @@ func (a *App) RunServer() {
 }
 
 func home(w http.ResponseWriter, r *http.Request) { // this is the home route
-	responses.JSON(w, http.StatusOK, "Welcome To Ivents")
+	responses.JSON(w, http.StatusOK, "Welcome To forestChat")
 }

@@ -1,12 +1,12 @@
 package main
 
 import (
+	"belajar/heyoo/api/controllers"
 	"log"
 	"os"
 
 	"github.com/joho/godotenv"
-
-	"github.com/peterwade153/ivents/api/controllers"
+	//"github.com/peterwade153/ivents/api/controllers"
 )
 
 func main() {

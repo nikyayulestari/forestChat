@@ -4,7 +4,6 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/badoux/checkmail"
 	"github.com/jinzhu/gorm"
 )
 
@@ -79,9 +78,9 @@ func (u *Users) Validate(action string) error {
 		if u.lastseenUser == "" {
 			return errors.New("LastSeenUser is required")
 		}
-		if err := checkmail.ValidateFormat(u.phoneUser); err != nil {
+		/* if err := checkmail.ValidateFormat(u.phoneUser); err != nil {
 			return errors.New("Invalid PhoneUser")
-		}
+		} */
 		return nil
 	}
 }
@@ -101,7 +100,7 @@ func (u *Users) SaveUser(db *gorm.DB) (*Users, error) {
 // GetUser returns a user based on email
 func (u *Users) GetUser(db *gorm.DB) (*Users, error) {
 	account := &Users{}
-	if err := db.Debug().Table("users").Where("email = ?", u.phoneUser).First(account).Error; err != nil {
+	if err := db.Debug().Table("users").Where("phoneUser = ?", u.phoneUser).First(account).Error; err != nil {
 		return nil, err
 	}
 	return account, nil
